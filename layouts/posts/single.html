@@ -17,6 +17,7 @@
         <div class="toc-content{{ if eq $toc.auto false }} always-active{{ end }}" id="toc-content-auto">
             {{- dict "Content" .TableOfContents "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
         </div>
+        {{- partial "google_ads_side" . -}}
     </div>
     {{- end -}}
     
@@ -221,6 +222,7 @@
 
         {{- /* Ads */ -}}
         {{- partial "google_ads.html" . -}}
+        {{- partial "ad_detector.html" . -}}
 
         {{- /* Footer */ -}}
         {{- partial "single/footer.html" . -}}
