@@ -218,10 +218,6 @@
             {{- dict "Content" .Content "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
         </div>
 
-        {{- /* Ads */ -}}
-        {{- partial "ads/ad_bottom.html" . -}}
-        {{- partial "ads/ad_detector.html" . -}}
-
         {{/* Related Content */}}
         {{- if $params.related.enable -}}
             {{- partial "related.html" . -}}
@@ -232,6 +228,10 @@
 
         {{- /* Footer */ -}}
         {{- partial "single/footer.html" . -}}
+
+        {{- /* Ads */ -}}
+        {{- partial "ads/ad_bottom.html" . -}}
+        {{- partial "ads/ad_detector.html" . -}}
 
         {{- /* Comment */ -}}
         {{- partial "comment.html" . -}}
