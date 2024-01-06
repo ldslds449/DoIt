@@ -109,6 +109,9 @@
             {{- with $waline.lang -}}
                 {{- $commentConfig = dict "lang" . | dict "waline" | merge $commentConfig -}}
             {{- end -}}
+            {{- with $waline.turnstileKey -}}
+                {{- $commentConfig = dict "turnstileKey" . | dict "waline" | merge $commentConfig -}}
+            {{- end -}}
             {{- if eq $waline.imageUploader false -}}
                 {{- $commentConfig = dict "imageUploader" false | dict "waline" | merge $commentConfig -}}
             {{- end -}}
