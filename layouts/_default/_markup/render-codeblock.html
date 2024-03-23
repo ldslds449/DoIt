@@ -1,0 +1,14 @@
+{{ $result := transform.HighlightCodeBlock . }}
+{{ $result.Wrapped }}
+
+<figure>
+  {{ with .Attributes }}
+    {{ if isset . "title" }}
+      {{ with .title }}
+        <figcaption>
+          {{- . -}}
+        </figcaption>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+</figure>
