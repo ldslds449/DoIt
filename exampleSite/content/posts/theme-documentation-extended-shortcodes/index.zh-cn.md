@@ -39,7 +39,7 @@ Hugo **extended** 版本对于 `style` shortcode 是必需的.
 
 `style` shortcode 有两个位置参数.
 
-第一个参数是自定义样式的内容. 它支持 [:(fab fa-sass fa-fw): SASS](https://sass-lang.com/documentation/style-rules/declarations#nesting) 中的嵌套语法,
+第一个参数是自定义样式的内容. 它支持 [{{< fa-icon brands sass >}} SASS](https://sass-lang.com/documentation/style-rules/declarations#nesting) 中的嵌套语法,
 并且 `&` 指代这个父元素.
 
 第二个参数是包裹你要更改样式的内容的 HTML 标签, 默认值是 `div`.
@@ -1352,7 +1352,7 @@ public class HelloWorld {
 
 {{< version 0.2.8 >}}
 
-`script` shortcode 用来在你的文章中插入 **:(fab fa-js fa-fw): Javascript** 脚本.
+`script` shortcode 用来在你的文章中插入 **{{< fa-icon brands js >}} Javascript** 脚本.
 
 {{< admonition >}}
 脚本内容可以保证在所有的第三方库加载之后按顺序执行.
@@ -1473,3 +1473,76 @@ $$\|\boldsymbol{x}\|_{0}=\sqrt[0]{\sum_{i} x_{i}^{0}}$$
 {{< math >}}
 $$\|\boldsymbol{x}\|_{0}=\sqrt[0]{\sum_{i} x_{i}^{0}}$$
 {{< /math >}}
+
+## tabs 和 tab
+
+`tabs` 和 `tab` 是两个 shortcodes, 当一起使用时, 可以为你的内容创建一个选项卡组件。
+
+一个 `tabs` 和 `tab` 示例:
+
+````markdown
+{{</* tabs */>}}
+
+{{%/* tab title="选项卡 1" */%}}
+
+### 标题 1
+
+你好👋
+
+#### 标题 2
+
+```py
+print("Hello world!")
+```
+
+{{%/* /tab */%}}
+
+{{%/* tab title="选项卡 2" */%}}
+
+另一个选项卡
+
+{{%/* /tab */%}}
+
+{{</* /tabs */>}}
+````
+呈现的输出效果如下：
+
+{{< tabs >}}
+
+{{% tab title="选项卡 1" %}}
+
+### 标题 1
+
+你好👋
+
+#### 标题 2
+
+```py
+print("Hello world!")
+```
+
+{{% /tab %}}
+
+{{% tab title="选项卡 2" %}}
+
+另一个选项卡
+
+{{% /tab %}}
+
+{{< /tabs >}}
+
+由于 Hugo shortcode 系统的限制，嵌套的选项卡可能无法正常工作。
+
+## fa-icon
+
+`fa-icon` shortcode 用于插入 [{{< fa-icon brands font-awesome >}}**Font Awesome 5**](https://fontawesome.com/v5/search?m=free) 图标。
+
+一个 `fa-icon` 示例:
+
+```markdown
+{{</* fa-icon regular smile */>}}
+```
+
+呈现的输出效果如下:
+
+{{< fa-icon regular smile >}}
