@@ -159,14 +159,6 @@ This is a **right-aligned** paragraph.
 
     HTML `figure` 标签的 `class` 属性.
 
-* **src_s** *[可选]*
-
-    图片缩略图的 URL, 用在画廊模式中, 默认值是 **src** 参数的值.
-
-* **src_l** *[可选]*
-
-    高清图片的 URL, 用在画廊模式中, 默认值是 **src** 参数的值.
-
 * **height** *[可选]*
 
     图片的 `height` 属性.
@@ -182,6 +174,14 @@ This is a **right-aligned** paragraph.
 * **rel** *[可选]*
 
     HTML `a` 标签 的 `rel` 补充属性, 仅在 **linked** 属性设置成 `true` 时有效.
+
+* **optimise** *[可选]*
+
+    图片是否需要被优化，覆盖全局配置。
+
+* **cacheRemote** *[可选]*
+
+    是否缓存远程图片，覆盖全局配置。
 
 一个 `image` 示例:
 
@@ -1253,6 +1253,43 @@ https://www.bilibili.com/video/BV1TJ411C7An?p=3
 
 {{< bilibili id=BV1TJ411C7An p=3 >}}
 
+### 高级用法
+
+`bilibili` shortcode 支持[此博客文章](https://zyc420.com/6143.html)中展示的所有命名参数。
+
+以下是所有命名参数的列表：
+
+| 参数名 | 参数位置 | 参数用途 | 使用方法 |
+|---|---|---|---|
+| id | 0 | 视频BVID，必须项 | BV1TJ411C7An |
+| p | 1 | 视频分P（默认为1） | 输入数字 |
+| autoplay | 2 | 是否自动播放（默认为否） | `1`或`true`：启用，`0`或`false`：关闭 |
+| danmaku | 3 | 默认弹幕开关（默认为开启） | `1`或`true`：启用，`0`或`false`：关闭 |
+| muted | 4 | 是否默认静音（默认为否） | `1`或`true`：启用，`0`或`false`：关闭 |
+| t | 5 | 默认开始时间（默认为0） | 直接输入数值，单位为秒 |
+
+以下选项目前似乎不起作用，但仍然被加进shortcode中，以希望未来这些选项能够被正常使用：
+
+| 参数名 | 参数位置 | 参数用途 | 使用方法 |
+|---|---|---|---|
+| hasMuteButton | 6 | 一键静音按钮是否显示（默认不显示） | `1`或`true`：启用，`0`或`false`：关闭 |
+| hideCoverInfo | 7 | 视频封面下方是否显示播放量弹幕量等信息（默认显示） | `1`或`true`：启用，`0`或`false`：关闭 |
+| hideDanmakuButton | 8 | 是否隐藏弹幕按钮（默认不隐藏） | `1`或`true`：启用，`0`或`false`：关闭 |
+| noFullScreenButton | 9 | 是否隐藏全屏按钮（默认显示） | `1`或`true`：启用，`0`或`false`：关闭 |
+| fjw | 10 | 是否启用记忆播放（默认开启） | `1`或`true`：启用，`0`或`false`：关闭 |
+
+一个带有所有命名参数的`bilibili`示例：
+
+```markdown
+{{</* bilibili BV1TJ411C7An 3 0 0 1 30 0 1 1 1 1 */>}}
+或者
+{{</* bilibili id=BV1TJ411C7An p=3 autoplay=0 danmaku=0 muted=1 t=30 hasMuteButton=0 hideCoverInfo=1 hideDanmakuButton=1 noFullScreenButton=1 fjw=1 */>}}
+```
+
+呈现的输出效果如下:
+
+{{< bilibili id=BV1TJ411C7An p=3 autoplay=0 danmaku=0 muted=1 t=30 hasMuteButton=0 hideCoverInfo=1 hideDanmakuButton=1 noFullScreenButton=1 fjw=1 >}}
+
 ## typeit
 
 `typeit` shortcode 基于 [TypeIt](https://typeitjs.com/) 提供了打字动画.
@@ -1450,30 +1487,6 @@ Or
 
 {{< showcase title="主题文档 - 基本概念" summary="探索 Hugo - DoIt 主题的全部内容和背后的核心概念." image="/theme-documentation-basics/featured-image.webp" link="/theme-documentation-basics" >}}
 
-## math
-
-{{< version 0.2.12 >}}
-
-`math` 用于插入数学公式. 它可以阻止 [Goldmark](https://gohugo.io/getting-started/configuration-markup/#goldmark) 将数学表达式中的特殊字符解析为 HTML 从而避免很多问题. 在 `math` 中, 你不再需要转义特殊字符.
-
-一个 `math` 示例:
-
-```markdown
-{{</* math */>}}$\|\boldsymbol{x}\|_{0}=\sqrt[0]{\sum_{i} x_{i}^{0}}${{</* /math */>}}
-Or
-{{</* math */>}}
-$$\|\boldsymbol{x}\|_{0}=\sqrt[0]{\sum_{i} x_{i}^{0}}$$
-{{</* /math */>}}
-```
-
-呈现的输出效果如下:
-
-{{< math >}}$\|\boldsymbol{x}\|_{0}=\sqrt[0]{\sum_{i} x_{i}^{0}}${{< /math >}}
-
-{{< math >}}
-$$\|\boldsymbol{x}\|_{0}=\sqrt[0]{\sum_{i} x_{i}^{0}}$$
-{{< /math >}}
-
 ## tabs 和 tab
 
 `tabs` 和 `tab` 是两个 shortcodes, 当一起使用时, 可以为你的内容创建一个选项卡组件。
@@ -1546,3 +1559,45 @@ print("Hello world!")
 呈现的输出效果如下:
 
 {{< fa-icon regular smile >}}
+
+## person
+
+`person` shortcode 用来在你的文章中以 [h-card](http://microformats.org/wiki/h-card) 的格式插入个人网站链接。
+
+`person` shortcode 有以下命名参数：
+
+* **url** *[必需]* (**第一个**位置参数)
+
+    个人网站的链接。
+
+* **name** *[必需]* (**第二个**位置参数)
+
+    个人的名字。
+
+* **text** *[可选]* (**第三个**位置参数)
+
+    个人的简介。
+
+* **picture** *[可选]* (**第四个**位置参数)
+
+    个人的头像。
+
+* **nick** *[可选]*
+
+    个人的昵称。
+
+一个 `person` 示例:
+
+```markdown
+{{</* person url="https://evgenykuznetsov.org" name="Evgeny Kuznetsov" nick="nekr0z" text="author of this shortcode" picture="https://evgenykuznetsov.org/img/avatar.jpg" */>}}
+```
+
+呈现的输出效果为 {{< person url="https://evgenykuznetsov.org" name="Evgeny Kuznetsov" nick="nekr0z" text="author of this shortcode" picture="https://evgenykuznetsov.org/img/avatar.jpg" >}}.
+
+一个使用通用图标的 `person` 示例:
+
+```markdown
+{{</* person "https://dillonzq.com/" Dillon "author of the LoveIt theme" */>}}
+```
+
+呈现的输出效果为 {{< person "https://dillonzq.com/" Dillon "author of the LoveIt theme" >}}.

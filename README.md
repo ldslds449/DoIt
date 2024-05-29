@@ -99,7 +99,7 @@ the DoIt theme may be more suitable for you.
 ### Appearance and Layout
 
 * **Responsive** layout
-* **Light/Dark/Black** mode
+* **Light/Dark** mode
 * Globally consistent **design language**
 * **Pagination** supported
 * Easy-to-use and self-expanding **table of contents**
@@ -209,14 +209,12 @@ Thanks to the authors of following resources included in the theme:
 
 * [Font Awesome](https://fontawesome.com/)
 * [Simple Icons](https://github.com/simple-icons/simple-icons)
-* [Animate.css](https://daneden.github.io/animate.css/)
 * [autocomplete.js](https://github.com/algolia/autocomplete.js)
 * [algoliasearch](https://github.com/algolia/algoliasearch-client-javascript)
 * [Fuse.js](https://fusejs.io/)
 * [object-fit-images](https://github.com/fregante/object-fit-images)
 * [Twemoji](https://github.com/twitter/twemoji)
 * [lightgallery.js](https://github.com/sachinchoolur/lightgallery.js)
-* [clipboard.js](https://github.com/zenorocha/clipboard.js)
 * [Sharer.js](https://github.com/ellisonleao/sharer.js)
 * [TypeIt](https://typeitjs.com/)
 * [KaTeX](https://katex.org/)

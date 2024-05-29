@@ -4,7 +4,8 @@
 {{- $commentConfig := dict -}}
 
 {{- if $comment.enable -}}
-    <div id="comments" class="print:!tw-hidden">
+    {{- .Scratch.SetInMap "this" "commentEnabled" true -}}
+    <div id="comments" class="print:!tw-hidden tw-pt-32 tw-pb-8">
         {{- /* Disqus Comment System */ -}}
         {{- $disqus := $comment.disqus | default dict -}}
         {{- if $disqus.enable -}}
@@ -78,7 +79,7 @@
             <div id="waline" class="comment"></div>
             {{- $source := $cdn.walineCSS | default "lib/waline/waline.css" -}}
             {{- dict "Source" $source "Minify" true "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/style.html" -}}
-            {{- $commentConfig = dict "el" "#waline" "serverURL" $waline.serverURL "lang" .Lang "dark" "body[theme='dark'], body[theme='black']" "copyright" true | dict "waline" | merge $commentConfig -}}
+            {{- $commentConfig = dict "el" "#waline" "serverURL" $waline.serverURL "lang" .Lang "dark" "body[theme='dark']" "copyright" true | dict "waline" | merge $commentConfig -}}
             {{- with $waline.pageview -}}
                 {{- $commentConfig = dict "pageview" . | dict "waline" | merge $commentConfig -}}
             {{- end -}}

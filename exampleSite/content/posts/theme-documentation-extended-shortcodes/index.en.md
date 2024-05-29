@@ -155,14 +155,6 @@ The `image` shortcode has the following named parameters:
 
     `class` attribute of the HTML `figure` tag.
 
-* **src_s** *[optional]*
-
-    URL of the image thumbnail, used for lightgallery, the default value is the value of the **src** parameter.
-
-* **src_l** *[optional]*
-
-    URL of the HD image, used for lightgallery, the default value is the value of the **src** parameter.
-
 * **height** *[optional]*
 
     `height` attribute of the image.
@@ -178,6 +170,14 @@ The `image` shortcode has the following named parameters:
 * **rel** *[optional]*
 
     Additional `rel` attributes of the HTML `a` tag, if **linked** parameter is set to `true`.
+
+* **optimise** *[optional]*
+
+    Whether to optimise the image, override the site configuration.
+
+* **cacheRemote** *[optional]*
+
+    Whether to cache the remote image, override the site configuration.
 
 Example `image` input:
 
@@ -1251,6 +1251,43 @@ The rendered output looks like this:
 
 {{< bilibili id=BV1TJ411C7An p=3 >}}
 
+### Advanced Usage
+
+The `bilibili` shortcode supports all named parameters shown in [this blog post](https://zyc420.com/6143.html)
+
+Here is a list of all named parameters:
+
+| Parameter Name | Position | Purpose | How to Use |
+|---|---|---|---|
+| id | 0 | Video BVID, required | BV1TJ411C7An |
+| p | 1 | Video part (default 1) | Enter a number |
+| autoplay | 2 | Auto-play (default no) | `1` or `true`: Enable, `0` or `false`: Disable |
+| danmaku | 3 | Default danmaku switch (default on) | `1` or `true`: Enable, `0` or `false`: Disable |
+| muted | 4 | Default muted (default no) | `1` or `true`: Enable, `0` or `false`: Disable |
+| t | 5 | Default start time (default 0) | Enter the value directly, in seconds |
+
+The following options seems not to work, but these are still added to the shortcode in case if they work in the future:
+
+| Parameter Name | Position | Purpose | How to Use |
+|---|---|---|---|
+| hasMuteButton | 6 | Whether the mute button is displayed (default not displayed) | `1` or `true`: Enable, `0` or `false`: Disable |
+| hideCoverInfo | 7 | Whether the information under the video cover like play count and danmaku count is displayed (default displayed) | `1` or `true`: Enable, `0` or `false`: Disable |
+| hideDanmakuButton | 8 | Whether to hide the danmaku button (default not hidden) | `1` or `true`: Enable, `0` or `false`: Disable |
+| noFullScreenButton | 9 | Whether to hide the full screen button (default displayed) | `1` or `true`: Enable, `0` or `false`: Disable |
+| fjw | 10 | Whether to start memory play (default on) | `1` or `true`: Enable, `0` or `false`: Disable |
+
+Example `bilibili` input with all named parameters:
+
+```markdown
+{{</* bilibili BV1TJ411C7An 3 0 0 1 30 0 1 1 1 1 */>}}
+or
+{{</* bilibili id=BV1TJ411C7An p=3 autoplay=0 danmaku=0 muted=1 t=30 hasMuteButton=0 hideCoverInfo=1 hideDanmakuButton=1 noFullScreenButton=1 fjw=1 */>}}
+```
+
+The rendered output looks like this:
+
+{{< bilibili id=BV1TJ411C7An p=3 autoplay=0 danmaku=0 muted=1 t=30 hasMuteButton=0 hideCoverInfo=1 hideDanmakuButton=1 noFullScreenButton=1 fjw=1 >}}
+
 ## typeit
 
 The `typeit` shortcode provides typing animation based on [TypeIt](https://typeitjs.com/).
@@ -1446,30 +1483,6 @@ The rendered output looks like this:
 
 {{< showcase title="Theme Documentation - Basics" summary="Discover what the Hugo - DoIt theme is all about and the core-concepts behind it." image="/theme-documentation-basics/featured-image.webp" link="/theme-documentation-basics" >}}
 
-## math
-
-{{< version 0.2.12 >}}
-
-`math` is a shortcode to insert a math expression in your post. This can prevent [Goldmark](https://gohugo.io/getting-started/configuration-markup/#goldmark) from parsing math expressions into HTML. You no longer need to escape special characters inside this shortcode.
-
-Example `math` input:
-
-```markdown
-{{</* math */>}}$\|\boldsymbol{x}\|_{0}=\sqrt[0]{\sum_{i} x_{i}^{0}}${{</* /math */>}}
-Or
-{{</* math */>}}
-$$\|\boldsymbol{x}\|_{0}=\sqrt[0]{\sum_{i} x_{i}^{0}}$$
-{{</* /math */>}}
-```
-
-The rendered output looks like this:
-
-{{< math >}}$\|\boldsymbol{x}\|_{0}=\sqrt[0]{\sum_{i} x_{i}^{0}}${{< /math >}}
-
-{{< math >}}
-$$\|\boldsymbol{x}\|_{0}=\sqrt[0]{\sum_{i} x_{i}^{0}}$$
-{{< /math >}}
-
 ## tabs and tab
 
 `tabs` and `tab` are two shortcodes, when used together, can create a tab component for your content.
@@ -1543,3 +1556,45 @@ A `fa-icon` example:
 The rendered output looks like this:
 
 {{< fa-icon regular smile >}}
+
+## person
+
+`person` is a shortcode to insert a link to a personal webpage marked up as [h-card](http://microformats.org/wiki/h-card).
+
+The `person` shortcode has the following named parameters:
+
+* **url** *[required]* (**first** positional parameter)
+
+    URL of the personal page.
+
+* **name** *[required]* (**second** positional parameter)
+
+    Name of the person.
+
+* **text** *[optional]* (**third** positional parameter)
+
+    Text to display as hover tooltip of the link.
+
+* **picture** *[optional]* (**fourth** positional parameter)
+
+    A picture to use as person's avatar.
+
+* **nick** *[optional]*
+
+    Nickame of the person.
+
+Example `person` input:
+
+```markdown
+{{</* person url="https://evgenykuznetsov.org" name="Evgeny Kuznetsov" nick="nekr0z" text="author of this shortcode" picture="https://evgenykuznetsov.org/img/avatar.jpg" */>}}
+```
+
+This renders as {{< person url="https://evgenykuznetsov.org" name="Evgeny Kuznetsov" nick="nekr0z" text="author of this shortcode" picture="https://evgenykuznetsov.org/img/avatar.jpg" >}}.
+
+Without an explicitly given picture, a generic icon is used. This input:
+
+```markdown
+{{</* person "https://dillonzq.com/" Dillon "author of the LoveIt theme" */>}}
+```
+
+This renders as {{< person "https://dillonzq.com/" Dillon "author of the LoveIt theme" >}}.

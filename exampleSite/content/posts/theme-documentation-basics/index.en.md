@@ -269,12 +269,14 @@ Please open the code block below to view the complete sample configuration {{< f
       ignoreLocation = false
       useExtendedSearch = false
       ignoreFieldNorm = false
+
+  [params.image]
+    # cache remote images for better optimisations
+    cacheRemote = true
+    # Image resizing and optimisation
+    optimise = true
   # Header config
   [params.header]
-    # desktop header mode ("fixed", "normal", "auto")
-    desktopMode = "fixed"
-    # mobile header mode ("fixed", "normal", "auto")
-    mobileMode = "auto"
     # {{< version 0.2.11 >}} Theme change mode
     # theme change mode ("switch", "select")
     themeChangeMode = "select"
@@ -509,10 +511,10 @@ Please open the code block below to view the complete sample configuration {{< f
       copyTex = true
       # KaTeX extension mhchem
       mhchem = true
+      # Use MathJax instead of KaTeX
+      mathjax = false
     # {{< version 0.2.0 >}} Code config
     [params.page.code]
-      # whether to show the copy button of the code block
-      copy = true
       # the maximum number of lines of displayed code by default
       maxShownLines = 10
     # {{< version 0.2.14 >}} Table config
