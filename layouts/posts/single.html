@@ -35,7 +35,7 @@
 
     <article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0">
         {{- /* Title */ -}}
-        <h1 class="single-title">{{ .Title }}</h1>
+        <h1 class="single-title" data-pagefind-meta="date:{{- .Site.Params.dateformat | default "2006-01-02" | .PublishDate.Format -}}" data-pagefind-body>{{ .Title }}</h1>
 
         {{- /* Subtitle */ -}}
         {{- with $params.subtitle -}}
@@ -97,7 +97,9 @@
                     {{ partial "plugin/fontawesome.html" (dict "Style" "solid" "Icon" "pencil-alt") }}&nbsp;{{ T "wordCount" .WordCount }}&nbsp;
                 {{- end -}}
                 {{- if $params.enableReadingTime | default true -}}
-                    {{ partial "plugin/fontawesome.html" (dict "Style" "regular" "Icon" "clock") }}&nbsp;{{ T "readingTime" .ReadingTime }}&nbsp;
+                    {{ $reading_speed := .Site.Params.reading_speed | default 228 -}}
+                    {{ $readingTime := int (math.Ceil (div (float .WordCount) $reading_speed)) }}
+                    {{ partial "plugin/fontawesome.html" (dict "Style" "regular" "Icon" "clock") }}&nbsp;{{ T "readingTime" $readingTime }}&nbsp;
                 {{- end -}}
                 {{- $comment := .Scratch.Get "comment" | default dict -}}
                 {{- /* Visitor Count */ -}}
@@ -118,7 +120,7 @@
                 {{- end -}}
                 {{- if $comment.enable | and $comment.artalk.enable | and $comment.artalk.pageview -}}
                     <span id="{{ .RelPermalink }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">
-                        {{ partial "plugin/fontawesome.html" (dict "Style" "regular" "Icon" "eye") }}&nbsp;<span class="leancloud-visitors-count" id="ArtalkPV"></span>&nbsp;{{ T "views" }}
+                        {{ partial "plugin/fontawesome.html" (dict "Style" "regular" "Icon" "eye") }}&nbsp;<span class="artalk-pv-count" id="ArtalkPV"></span>&nbsp;{{ T "views" }}
                     </span>&nbsp;
                  {{- end -}}
 
@@ -204,7 +206,7 @@
         {{- end -}}
 
         {{- /* Content */ -}}
-        <div class="content" id="content">
+        <div class="content" id="content" data-pagefind-body>
             {{- /* Outdated Article Reminder */ -}}
             {{- partial "single/outdatedArticleReminder.html" . -}}
             {{- dict "Content" .Content "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}

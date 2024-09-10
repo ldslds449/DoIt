@@ -821,6 +821,10 @@ html.dark {
   display: inline-block;
 }
 
+.tw-inline {
+  display: inline;
+}
+
 .tw-flex {
   display: flex;
 }
@@ -935,6 +939,10 @@ html.dark {
 
 .tw-pt-32 {
   padding-top: 8rem;
+}
+
+.tw-align-text-bottom {
+  vertical-align: text-bottom;
 }
 
 .tw-text-fgColor-link-muted {
