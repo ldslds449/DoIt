@@ -1,6 +1,6 @@
 .cc-window.cc-banner {
   .cc-btn {
-    color: $global-font-color;
+    color: black;  // we cannot use $global-font-color, since the background is always white
 
     &:hover,
     &:focus {
