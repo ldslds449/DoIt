@@ -227,6 +227,13 @@ optimizeImages = true
   srcsetLargeResizeMethod = "2000x webp Lanczos q75"
   # {{< version 0.2.14 >}} 版权信息
   license = '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+  # 作者配置
+  [params.author]
+    name = "xxxx"
+    email = ""
+    link = ""
+    avatar = ""
+    gravatarEmail = ""
   # {{< version 0.2.0 >}} 应用图标配置
   [params.app]
     # 当添加到 iOS 主屏幕或者 Android 启动器时的标题, 覆盖默认标题
@@ -505,6 +512,12 @@ optimizeImages = true
     [params.page.code]
       # 默认展开显示的代码行数
       maxShownLines = 10
+      # 是否显示代码行号
+      lineNos = true
+      # 是否开启代码换行
+      wrap = false
+      # 是否显示代码块标题
+      header = true
     # {{< version 0.2.14 >}} 表格配置
     [params.page.table]
       # 是否开启表格排序
@@ -838,8 +851,6 @@ optimizeImages = true
   [params.compatibility]
     # 是否使用 Polyfill.io 来兼容旧式浏览器
     polyfill = false
-    # 是否使用 object-fit-images 来兼容旧式浏览器
-    objectFit = false
 
 # Hugo 解析文档的配置
 [markup]
@@ -870,14 +881,6 @@ optimizeImages = true
     startLevel = 2
     endLevel = 6
 
-# 作者配置
-[author]
-  name = "xxxx"
-  email = ""
-  link = ""
-  avatar = ""
-  gravatarEmail = ""
-
 # 网站地图配置
 [sitemap]
   changefreq = "weekly"
@@ -894,7 +897,7 @@ optimizeImages = true
   # {{< version 0.2.0 deleted >}} Google Analytics 相关隐私 (被 params.analytics.google 替代)
   [privacy.googleAnalytics]
     # ...
-  [privacy.twitter]
+  [privacy.x]
     enableDNT = true
   [privacy.youtube]
     privacyEnhanced = true

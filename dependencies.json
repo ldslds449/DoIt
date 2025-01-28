@@ -3,7 +3,7 @@
     "dependencies": [
         {
             "name": "twikoo",
-            "version": "1.6.39",
+            "version": "1.6.41",
             "files": [
                 {
                     "remote": "dist/twikoo.all.min.js",
@@ -17,7 +17,7 @@
         },
         {
             "name": "@waline/client",
-            "version": "3.3.0",
+            "version": "3.5.1",
             "files": [
                 {
                     "remote": "dist/waline.css",
@@ -31,7 +31,7 @@
         },
         {
             "name": "katex",
-            "version": "0.16.11",
+            "version": "0.16.21",
             "files": [
                 {
                     "remote": "dist/katex.min.js",
@@ -57,7 +57,7 @@
         },
         {
             "name": "echarts",
-            "version": "5.5.1",
+            "version": "5.6.0",
             "files": [
                 {
                     "remote": "dist/echarts.min.js",
@@ -71,7 +71,7 @@
         },
         {
             "name": "artalk",
-            "version": "2.9.0",
+            "version": "2.9.1",
             "files": [
                 {
                     "remote": "dist/Artalk.js",
@@ -93,7 +93,7 @@
         },
         {
             "name": "@artalk/plugin-katex",
-            "version": "0.2.2",
+            "version": "0.2.4",
             "files": [
                 {
                     "remote": "dist/artalk-plugin-katex.js",
@@ -103,7 +103,7 @@
         },
         {
             "name": "@artalk/plugin-lightbox",
-            "version": "0.2.3",
+            "version": "0.2.4",
             "files": [
                 {
                     "remote": "dist/artalk-plugin-lightbox.js",
@@ -123,7 +123,7 @@
         },
         {
             "name": "typeit",
-            "version": "8.8.4",
+            "version": "8.8.7",
             "files": [
                 {
                     "remote": "dist/index.umd.min.js",

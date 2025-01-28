@@ -222,9 +222,16 @@ Please open the code block below to view the complete sample configuration {{< f
   srcsetSmallResizeMethod = "700x webp Lanczos q75"
   srcsetDefaultResizeMethod = "1200x webp Lanczos q75"
   srcsetLargeResizeMethod = "2000x webp Lanczos q75"
-  # {{< version 0.2.0 >}} App icon config
   # {{< version 0.2.14 >}} License information
   license = '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+  # Author config
+  [params.author]
+    name = "xxxx"
+    email = ""
+    link = ""
+    avatar = ""
+    gravatarEmail = ""
+  # {{< version 0.2.0 >}} App icon config
   [params.app]
     # optional site title override for the app when added to an iOS home screen or Android launcher
     title = "DoIt"
@@ -517,6 +524,12 @@ Please open the code block below to view the complete sample configuration {{< f
     [params.page.code]
       # the maximum number of lines of displayed code by default
       maxShownLines = 10
+      # whether to enable line numbers in the code block
+      lineNos = true
+      # whether to enable line wrapping in the code block
+      wrap = false
+      # whether to display the header in the code block
+      header = true
     # {{< version 0.2.14 >}} Table config
     [params.page.table]
       # whether to enable sorting in the tables
@@ -836,8 +849,6 @@ Please open the code block below to view the complete sample configuration {{< f
     # whether to use Polyfill.io on cdnjs to be compatible with older browsers
     # https://blog.cloudflare.com/polyfill-io-now-available-on-cdnjs-reduce-your-supply-chain-risk
     polyfill = false
-    # whether to use object-fit-images to be compatible with older browsers
-    objectFit = false
 
 # Markup related config in Hugo
 [markup]
@@ -868,14 +879,6 @@ Please open the code block below to view the complete sample configuration {{< f
     startLevel = 2
     endLevel = 6
 
-# Author config
-[author]
-  name = "xxxx"
-  email = ""
-  link = ""
-  avatar = ""
-  gravatarEmail = ""
-
 # Sitemap config
 [sitemap]
   changefreq = "weekly"
@@ -892,7 +895,7 @@ Please open the code block below to view the complete sample configuration {{< f
   # {{< version 0.2.0 deleted >}} privacy of the Google Analytics (replaced by params.analytics.google)
   [privacy.googleAnalytics]
     # ...
-  [privacy.twitter]
+  [privacy.x]
     enableDNT = true
   [privacy.youtube]
     privacyEnhanced = true
